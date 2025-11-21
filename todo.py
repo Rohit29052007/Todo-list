@@ -1,50 +1,55 @@
-
-tasks=[]
+tasks = []
 
 def view_tasks():
     if not tasks:
-        print("No tasks Yet/n")
+        print("No tasks yet.\n")
         return 
     print("Your Tasks:")
-    for i,t in enumerate(tasks,1):
-        print(f"{i},{t}")
+    for i, t in enumerate(tasks, 1):
+        print(f"{i}. {t}")
     print()
 
 def add_tasks():
-    task=input("Enter Your Task:")
+    task = input("Enter your task: ")
     if task:
         tasks.append(task)
-        print("Task Added")
+        print("Task added.\n")
     else:
-        print("Empty task not Allowed")
+        print("Empty task is not allowed.\n")
 
 def remove_tasks():
     view_tasks()
     if not tasks:
-        return 
+        return
     try:
-        num=int(input("Enter task number to remove:"))
-        tasks.pop(num-1)
-        print("Task Removed")
+        num = int(input("Enter task number to remove: "))
+        tasks.pop(num - 1)
+        print("Task removed.\n")
     except:
-        print("Invalid Option")
+        print("Invalid option.\n")
 
 def main():
-    print("*****-------TO DO LIST-------*******")
-    while True:    
+    print("*****------- TO-DO LIST -------*****")
+    while True:
         print("Actions: Add | View | Remove | Exit")
-        cmd=input("Enter command:").lower()
+        cmd = input("Enter command: ").lower()
 
-        if cmd=="add":
+        if cmd == "add":
             add_tasks()
-        elif cmd=="view":
+        elif cmd == "view":
             view_tasks()
-        elif cmd=="remove":
+        elif cmd == "remove":
             remove_tasks()
-        elif cmd=="exit":
+        elif cmd == "exit":
             break
         else:
-            print("Invalid Choice of Command!")
+            print("Invalid choice!\n")
+            continue
+
+        # ✔ Ask if the user wants to continue
+        ch = input("Do you want to continue? (Yes/no): ").lower()
+        if ch not in ("yes", "y"):
+            print("Thank you for using the To-Do List!")
+            break
 
 main()
-
